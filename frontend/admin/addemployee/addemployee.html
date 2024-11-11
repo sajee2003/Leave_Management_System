@@ -1,0 +1,64 @@
+
+<div class="container">
+    <h1>Employee Management System</h1>
+    <input type="text" id="searchInput" placeholder="Search by NIC, First Name" style="margin-top: 10px;">
+    <!-- Search Box -->
+    <!-- <input type="text" id="search" placeholder="Search Employees" oninput="searchEmployees()" /> -->
+
+    <!-- Add Employee Button -->
+    <button id="addEmployeeBtn" >Add Employee</button>
+
+    <!-- Employee Table -->
+    <h2>Employee List</h2>
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>EmployeeId</th>
+                <th>firstName</th>
+                <th>NIC</th>
+                <th>DOB</th>
+                <th>Email</th>
+                <th>JoinDate</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Employee Rows will be injected here -->
+        </tbody>
+    </table>
+
+    <!-- Add/Edit Employee Form Modal -->
+    <div id="employeeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEmployeeForm()">&times;</span>
+            <h2 id="modalTitle">Add Employee</h2>
+            <form id="employeeForm">
+                <label for="EmployeeId">EmployeeId</label>
+                <input type="text" id="employeeId"  >
+                <label for="firstName">Employee firstName</label>
+                <input type="text" id="firstName" required>
+                <label for="NIC">NIC</label>
+                <input type="text" id="nic" required>
+                <label for="dob">DOB</label>
+                <input type="date" id="dob" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+                <label for="JoinDate">JoinDate</label>
+                <input type="date" id="joinDate" required>
+                <label for="role" id="role1">Role: </label>
+                <label for="role" id="role2"></label>
+               <select name="role" id="role">
+                <option value=""  selected >Select a role</option> 
+                <option value="InternSoftwareEngineer">Intern SoftwareEngineer</option>
+                <option value="AssociateSoftwareEngineer">Associate SoftwareEngineer</option>
+                <option value="SeniorSoftwareEngineer">Senior SoftwareEngineer</option>
+                <option value="TechLead">TechLead</option>
+               </select>
+                <button type="submit" id="saveButton">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="em.js"></script> -->

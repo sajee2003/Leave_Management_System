@@ -1,0 +1,40 @@
+
+    <div class="leaverequestcontainer">
+        <!-- Tabs for navigation -->
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('apply-leave')">Apply Leave</button>
+            <button class="tab" onclick="showSection('leave-status')">Leave Status</button>
+        </div>
+
+        <!-- Leave Information Section -->
+        <div class="leave-info">
+            <div class="leave-box" id="leaves-Casualavailable"><br><small> Casual Leaves</small></div>
+            <div class="leave-box" id="leaves-Sickavailable"><br><small>Sick Leaves</small></div>
+            <div class="leave-box" id="leaves-extrataken"><br><small>Extera Leaves</small></div>
+            <div class="leave-box" id="leaves-year"><br><small>This Year</small></div>
+        </div>
+
+        <!-- Leave Application Form -->
+        <div class="leave-application" id="apply-leave">
+            <h2>Leave Application</h2>
+            <form id="leave-form">
+              
+                <label>From <input type="date" id="from-date" required></label>
+                <label>To <input type="date" id="to-date" required></label>
+                
+                <label>No of Days <input type="number" id="no-of-days" min="1" required></label>
+                <label>Leave Type
+                    <select id="leave-type" required>
+                        <option value="sick">Sick leave</option>
+                        <option value="casual">Casual leave</option>
+                        <!-- <option value="earned">Earned leave</option> -->
+                    </select>
+                </label>
+                <textarea id="reason" placeholder="Type reason here..." required></textarea>
+                <div class="buttons">
+                    <button type="submit" class="apply-btn">Apply Leave</button>
+                    <button type="reset" class="reset-btn">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>

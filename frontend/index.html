@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leave Management</title>
+    <style>
+        /* Custom styles to match the design */
+        .container-custom {
+            display: flex;
+            align-items: center;
+            height: 100vh;
+            background-color:
+                #ffffff;
+        }
+
+        body {
+
+            overflow: hidden;
+        }
+
+        .text-section {
+            flex: 1;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .image-section {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-custom {
+            margin: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5)
+        }
+
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        label {
+            margin-bottom: 8px;
+            color: #555555;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="file"] {
+            /* margin-bottom: 20px; */
+            padding: 8px;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #333333;
+            background-color: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        input[type="file"]:focus {
+            border-color: #007bff;
+            outline: none;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .close {
+            color: #070606;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        #signin-btn,
+        #signup-btn {
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.5em 2em;
+            border-radius: 50px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-custom">
+      
+        <div class="text-section">
+            <h1> Apply and Manage your leaves in the easiest way possible </h1>
+            <button class="btn  btn-custom" style="background-color: #f57d96;" id="signin-btn">Sign In</button>
+            <button class="btn btn-outline-danger btn-custom" id="signup-btn">Sign Up</button>
+        </div>
+
+     
+        <div class="image-section">
+           
+            <img src="../assests/intro.png" alt="Leave Management Illustration" class="img-fluid">
+        </div>
+    </div>
+
+    <!-- signin-modal -->
+    <div id="signin-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="signin-close">&times;</span>
+            <h2>Sign In</h2>
+            <form id="signin-form">
+                <label for="signin-username">Username:</label>
+                <input type="text" id="signin-username" name="username" required>
+                <label for="signin-password">Password:</label>
+                <input type="password" id="signin-password" name="password" required>
+                <label for="signin-role">User Role:</label>
+                <button type="submit">Sign In</button>
+            </form>
+            <p id="loginMessage"></p>
+        </div>
+    </div>
+
+
+    <!--signup-modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="signup-close">&times;</span>
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+                <label for="signup-username">Username:</label>
+                <input type="text" id="signup-username" name="username" required>
+                <label for="signup-password">Password:</label>
+                <input type="password" id="signup-password" name="password" required>
+                <label for="signup-nic">NIC:</label>
+                <input type="text" id="signup-nic" name="nic" required>
+                <label for="signup-role">User Role:</label>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- <div id="sideModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleModal()">&times;</span>
+            <p>You are logged in!</p>
+            <button id="logoutBtn" onclick="logOut()">Logout</button>
+        </div>
+    </div> -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>

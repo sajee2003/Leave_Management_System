@@ -1,0 +1,155 @@
+{
+  "employees": [
+    {
+      "employeeId": "123",
+      "name": "123",
+      "nic": "123",
+      "dob": "2024-11-27",
+      "email": "kanesarajasajeevan295@gmail.com",
+      "joinDate": "2024-11-16",
+      "role": "InternSoftwareEngineer",
+      "id": "e31f"
+    },
+    {
+      "id": "e31WCFf",
+      "employeeId": "1234",
+      "name": "1234",
+      "nic": "1234",
+      "dob": "2024-11-27",
+      "email": "kanesarajasajeev4an295@gmail.com",
+      "joinDate": "2024-11-6",
+      "role": "InternSoftwareEngineer"
+    },
+    {
+      "id": "e31WG4Wf",
+      "employeeId": "12345",
+      "name": "12345",
+      "nic": "12345",
+      "dob": "2024-11-43",
+      "email": "kanesarajasajeeRvan295@gmail.com",
+      "joinDate": "2024-11-16",
+      "role": "InternSoftwareEngineer"
+    },
+    {
+      "id": "e3144f56",
+      "employeeId": "123456",
+      "name": "12356",
+      "nic": "12356",
+      "dob": "2024-11-27",
+      "email": "kanesarajasajeevan295@gmail.com",
+      "joinDate": "2024-11-16",
+      "role": "InternSoftwareEngineer"
+    },
+    {
+      "id": "e3144f56",
+      "employeeId": "1234567",
+      "name": "123567",
+      "nic": "123567",
+      "dob": "2024-11-27",
+      "email": "kanesarajasajeevan295@gmail.com",
+      "joinDate": "2024-11-16",
+      "role": "InternSoftwareEngineer"
+    }
+  ],
+  "employeeleaves": [
+    {
+      "id": "fwew",
+      "employeeId": "123",
+      "lastdate": "2024-09-17",
+      "casualLeaves": "1",
+      "sickLeaves": "3",
+      "earnedleave": "0"
+    },
+    {
+      "id": "f3q",
+      "employeeId": "1234567",
+      "lastdate": "2024-09-17",
+      "casualLeaves": "1",
+      "sickLeaves": "6",
+      "earnedleave": "0"
+    }
+  ],
+  "users": [
+    {
+      "id": "69cf",
+      "employeeId": "123",
+      "password": "12345",
+      "nic": "12345"
+    }
+  ],
+  "leaveRequests": [
+    {
+      "id": "a86b",
+      "employeeId": 123,
+      "dateto": "2024-09-17",
+      "dateFrom": "2024-09-17",
+      "numOfDays": "1",
+      "applicationDate": "2024-09-06",
+      "type": "casual",
+      "reason": "",
+      "status": "confirm"
+    },
+    {
+      "id": "a86b",
+      "employeeId": 12345,
+      "dateto": "2024-09-17",
+      "dateFrom": "2024-09-17",
+      "numOfDays": "1",
+      "applicationDate": "2024-09-06",
+      "type": "casual",
+      "reason": "",
+      "status": "reject"
+    },
+    {
+      "id": "a86b",
+      "employeeId": 123456,
+      "dateto": "2024-09-17",
+      "dateFrom": "2024-09-17",
+      "numOfDays": "1",
+      "applicationDate": "2024-09-06",
+      "type": "casual",
+      "reason": "",
+      "status": "confirm"
+    },
+    {
+      "id": "d3b3",
+      "employeeId": "123",
+      "dateFrom": "2024-11-09",
+      "dateto": "2024-11-16",
+      "numOfDays": "5",
+      "type": "casual",
+      "reason": "1213ed3d",
+      "status": "confirm"
+    },
+    {
+      "id": "4d45",
+      "employeeId": "123",
+      "dateFrom": "2024-11-08",
+      "dateto": "2024-11-21",
+      "numOfDays": "11",
+      "type": "casual",
+      "reason": "s54",
+      "status": "confirm"
+    },
+    {
+      "id": "be58",
+      "employeeId": "123",
+      "dateFrom": "2024-11-13",
+      "dateto": "2024-11-20",
+      "numOfDays": "6",
+      "type": "sick",
+      "reason": "qwdq",
+      "status": "confirm"
+    },
+    {
+      "id": "1d80",
+      "employeeId": "123",
+      "dateFrom": "2024-10-31",
+      "dateto": "2024-11-27",
+      "numOfDays": "20",
+      "type": "sick",
+      "reason": "SD",
+      "status": "pending"
+    }
+  ]
+}
