@@ -1,12 +1,12 @@
-
+<!-- 
     <div class="leaverequestcontainer">
-        <!-- Tabs for navigation -->
+       
         <div class="tabs">
             <button class="tab active" onclick="showSection('apply-leave')">Apply Leave</button>
             <button class="tab" onclick="showSection('leave-status')">Leave Status</button>
         </div>
 
-        <!-- Leave Information Section -->
+      
         <div class="leave-info">
             <div class="leave-box" id="leaves-Casualavailable"><br><small> Casual Leaves</small></div>
             <div class="leave-box" id="leaves-Sickavailable"><br><small>Sick Leaves</small></div>
@@ -14,7 +14,7 @@
             <div class="leave-box" id="leaves-year"><br><small>This Year</small></div>
         </div>
 
-        <!-- Leave Application Form -->
+      
         <div class="leave-application" id="apply-leave">
             <h2>Leave Application</h2>
             <form id="leave-form">
@@ -27,7 +27,7 @@
                     <select id="leave-type" required>
                         <option value="sick">Sick leave</option>
                         <option value="casual">Casual leave</option>
-                        <!-- <option value="earned">Earned leave</option> -->
+                     
                     </select>
                 </label>
                 <textarea id="reason" placeholder="Type reason here..." required></textarea>
@@ -37,4 +37,104 @@
                 </div>
             </form>
         </div>
+    </div> -->
+
+
+<div class="container">
+    <!-- Tab Buttons -->
+    <div class="tab-buttons">
+        <button class="btn btn-primary"  id="btnintial">Apply Leave</button>
+        <button class="btn btn-secondary"  id="btnsecond"  >Leave Status</button>
     </div>
+    <div id="applyLeave">
+        <div class="card-section">
+            <div class="card">
+                <h5 id="leaves-Casualavailable"></h5>
+                <p>Available Total of 46</p>
+            </div>
+            <div class="card">
+                <h5 id="leaves-Sickavailable"></h5>
+                <p>Available Total of 20</p>
+            </div>
+            <div class="card">
+                <h5 id="leaves-extrataken"></h5>
+                <p>This Year</p>
+            </div>
+            <div class="card">
+                <h5 id="leaves-year"></h5>
+                <p>Leave Status</p>
+            </div>
+        </div>
+
+
+
+        <div class="form-container" id="applyLeave">
+            <h4>Leave Application</h4>
+            <form id="leave-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fromDate">From</label>
+                        <input type="date" class="form-control" id="from-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="toDate">To</label>
+                        <input type="date" class="form-control" id="to-date">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="days">No of Days</label>
+                    <input type="number" class="form-control" id="no-of-days" placeholder="Number of days">
+                </div>
+
+                <!-- Leave Type and Reason fields side by side -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="leaveType">Leave Type</label>
+                        <select class="form-control" id="leave-type">
+                            <option>Sick leave</option>
+                            <option>Casual leave</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Reason</label>
+                        <textarea class="form-control" id="reason" rows="2"
+                            placeholder="Type reason here..."></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Apply Leave</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="container" id="leaveStatus" style="display: none;">
+        <table id="employeerequestTable">
+            <thead>
+                <tr>
+                    <th>EmployeeId</th>
+                    <th>DateTo</th>
+                    <th>DateFrom</th>
+                    <th>NumOfDays</th>
+                    <th>ApplicationDate</th>
+                    <th>Type</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Employee Rows will be injected here -->
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<!-- Card Section -->
+
+<!-- Leave Application Form -->
+
+
+
+

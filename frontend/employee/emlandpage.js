@@ -52,3 +52,8 @@ document.getElementById('btn_profile').addEventListener('click', function() {
 window.onload = function() {
   loadPage('employeeprofile/emProfile.html');  // Default to Task page
 };
+
+document.getElementById('logoutBtn').onclick = function () {
+  localStorage.removeItem('loggedInUser');
+  window.location.href = "../index.html";
+};

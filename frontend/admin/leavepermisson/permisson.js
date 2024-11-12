@@ -4,14 +4,31 @@
     const employess = "http://localhost:3000/employees"
     const employeeleaves = "http://localhost:3000/employeeleaves"
 
+    let employeeleavedatas = []
+    let employeedatas = []
     let leaveRequests = []
 
-    let employeeleavedatas = []
+
     let employees = []
 
+    let leavecount = []
+    let emleavecount = []
 
 
-    let employeedatas = []
+
+    let employeeleave = []
+    let type = null
+
+
+
+
+    // const fetchemployeeLeaveData = async () => {
+    //     const response7 = await fetch(employeeleaves);
+    //     leavecount = await response7.json();
+    //     console.log(leavecount)
+    //     // renderEmployees();
+
+    // }
 
 
 
@@ -48,6 +65,7 @@
     window.getpendingleaves = () => {
         employees = leaveRequests.filter(emp => emp.status == "pending");
         console.log(employees)
+
         display()
     };
 
@@ -82,7 +100,7 @@
 
             //
             console.log(employeeleavedatas)
-            let employeeleave = []
+
             employeeleave = employeeleavedatas.find(emp => emp.employeeId == dataemployeeId);
             console.log(employeeleave)
 
@@ -107,7 +125,7 @@
 
             let employeesee = null
             async function set(dty, dtyle) {
-                console.log('bh4wgb')
+
                 console.log(dtyle)
                 console.log(dty)
                 const response2 = await fetch(`${employess}/${dty}`);
@@ -127,8 +145,9 @@
                 console.log(element.applicationDate)
                 console.log(employeesee.role)
                 console.log(employeesee.role)
-                console.log(employeesee.role)
-                console.log(employeesee.role)
+
+
+                type = element.type
 
                 card.innerHTML = `
                     <div class="card-header">
@@ -161,8 +180,6 @@
                 `;
 
                 cardContainer.appendChild(card);
-
-
             }
 
 
@@ -196,61 +213,137 @@
 
 
 
+    window.rejectRequest = async (dt) => {
+        console.log(dt)
+        
+        await fetch(`${apiUrl}/${dt}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                status:"reject"
+            })
+
+        })
+        .then(response => response.json())
+        .then(data => console.log("Request rejected:", data))
+        .catch(error => console.error("Error rejecting request:", error));
+
+
+
+
+        // emleavecount = leavecount.find(emp => emp.employeeId == dataemployeeId);
+        // console.log(emleavecount)
 
 
 
 
 
-    // // Fetch data from the mock API
-    // fetch(apiUrl)
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         const cardContainer = document.getElementById('card-container');
-    //         data.forEach(request => {
-    //             // Create a card for each leave request
-    //             const card = document.createElement('div');
-    //             card.classList.add('card');
 
-    //             // Fill in card content with data from the JSON API
-    //             card.innerHTML = `
-    //                 <div class="card-header">
-    //                     <div class="profile">
-    //                         <div class="profile-img"></div>
-    //                         <div>
-    //                             <h4>${request.name}</h4>
-    //                             <p>${request.role}</p>
-    //                         </div>
-    //                     </div>
-    //                     <p class="date">${request.requestDate}</p>
-    //                 </div>
-    //                 <div class="date-range">
-    //                     <div class="date-box">${request.startDate.split(" ")[0]} <strong>${request.startDate.split(" ")[1]}</strong></div>
-    //                     <div class="arrow">→</div>
-    //                     <div class="date-box">${request.endDate.split(" ")[0]} <strong>${request.endDate.split(" ")[1]}</strong></div>
-    //                     <p class="days">${request.days} days</p>
-    //                 </div>
-    //                 <div class="leave-info">
-    //                     <p><strong>${request.leaveType}</strong></p>
-    //                     <p>${request.description}</p>
-    //                 </div>
-    //                 <p class="leaves-available">${request.leavesAvailable} Leaves Available</p>
-    //                 <div class="actions">
-    //                     <button class="approve" onclick="approveRequest(${request.id})">Approve</button>
-    //                     <button class="reject" onclick="rejectRequest(${request.id})">Reject</button>
-    //                 </div>
-    //             `;
+    }
 
-    //             // Add the card to the card container
-    //             cardContainer.appendChild(card);
-    //         });
-    //     })
-    //     .catch(error => console.error('Error fetching data:', error));
-
-    // Functions for Approve and Reject actions
+    window.approveRequest = async (dt) => {
+        console.log(dt)
+        // console.log(type)
+        // console.log(days)
+        // console.log(dtyle)
 
 
-    window.approveRequest = async (data) =>{
-        await fetch(`${apiUrl}/${data}`, {
+        let employeesee3 = []
+        const response9 = await fetch(`${apiUrl}/${dt}`);
+        employeesee3 = await response9.json();
+        console.log(employeesee3)
+        console.log(employeesee3.type)
+        console.log(employeesee3.numOfDays)
+        console.log(employeesee3.employeeId)
+        let type = employeesee3.type
+        let days = employeesee3.numOfDays
+
+
+        let employeeleave2 = []
+        employeeleave2 = employeeleavedatas.find(emp => emp.employeeId == employeesee3.employeeId);
+        console.log(employeeleave2)
+        console.log(employeeleave2.id)
+        console.log(employeeleave2.sickLeaves)
+        console.log(employeeleave2.earnedleave)
+        console.log(employeeleave2.casualLeaves)
+
+
+
+        let emleavecountid = employeeleave2.id
+        let emleavecountcasual = employeeleave2.casualLeaves
+        let emleavecountsick = employeeleave2.sickLeaves
+        let emleavecountearn = employeeleave2.earnedleave
+
+        let earnleave = employeeleave2.earnedleave
+
+        if (type == "Casual leave") {
+            console.log("hi")
+
+            let finalcasuAL = emleavecountcasual - days
+            if (finalcasuAL < 0) {
+
+
+                earnleave = emleavecountearn + -(finalcasuAL)
+                finalcasuAL = 0
+
+            }
+
+            await fetch(`${employeeleaves}/${emleavecountid}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    casualLeaves: finalcasuAL,
+                    earnedleave: earnleave
+
+                })
+
+            })
+                .then(response => response.json())
+                .then(data => console.log("Request rejected:", data))
+                .catch(error => console.error("Error rejecting request:", error));
+
+
+        } 
+        else 
+        {
+
+            let finalsick = emleavecountsick - days
+            if (finalsick < 0) {
+
+
+                earnleave = emleavecountearn + -(finalsick)
+                finalsick = 0
+
+            }
+
+
+            await fetch(`${employeeleaves}/${emleavecountid}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    sickLeaves: finalsick,
+                    earnedleave: earnleave
+                })
+
+            })
+                .then(response => response.json())
+                .then(data => console.log("Request rejected:", data))
+                .catch(error => console.error("Error rejecting request:", error));
+
+
+
+        }
+
+
+
+
+        await fetch(`${apiUrl}/${dt}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -258,17 +351,30 @@
             body: JSON.stringify({
                 status:"confirm"
             })
-            
+
         })
         .then(response => response.json())
         .then(data => console.log("Request rejected:", data))
         .catch(error => console.error("Error rejecting request:", error));
+
+
+
+
+        emleavecount = leavecount.find(emp => emp.employeeId == dataemployeeId);
+        console.log(emleavecount)
+
+
+
+
+
 
     }
 
     // function rejectRequest(id) {
     //     alert(`Leave Rejected for request ID: ${id}`);
     // }
+
+
     fetchemployeeleavedata()
     fetchemployeesdata()
     fetchLeavesdata()

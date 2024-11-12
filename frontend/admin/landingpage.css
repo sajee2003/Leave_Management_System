@@ -359,35 +359,35 @@ table {
     border-collapse: collapse;
 }
 
-/* Set specific widths for certain columns */
+
 th:nth-child(1), td:nth-child(1) {
-    width: 14%; /* Adjust as needed */
+    width: 14%; 
 }
 
 th:nth-child(2), td:nth-child(2) {
-    width: 15%; /* Adjust as needed */
+    width: 15%; 
 }
 
 th:nth-child(3), td:nth-child(3) {
-    width: 15%; /* Adjust as needed */
+    width: 15%; 
 }
 
 th:nth-child(4), td:nth-child(4) {
-    width: 13%; /* Adjust as needed */
+    width: 13%; 
 }
 
 th:nth-child(5), td:nth-child(5) {
-    width: 20%; /* Adjust as needed */
+    width: 20%;
 }
 
 th:nth-child(6), td:nth-child(5) {
-    width: 13%; /* Adjust as needed */
+    width: 13%; 
 }
 th:nth-child(7), td:nth-child(5) {
-    width: 20%; /* Adjust as needed */
+    width: 20%; 
 }
 th:nth-child(8), td:nth-child(5) {
-    width: 20%; /* Adjust as needed */
+    width: 20%; 
 }
 
 
@@ -515,4 +515,19 @@ th, td {
     padding: 8px 16px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.confirm-text {
+    color: green;
+    font-weight: bold;
+}
+
+.reject-text {
+    color: red;
+    font-weight: bold;
+}
+
+.pending-text {
+    color: orange;
+    font-weight: bold;
 }

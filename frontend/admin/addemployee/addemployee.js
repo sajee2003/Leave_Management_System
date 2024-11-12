@@ -1,28 +1,18 @@
-(function ()  {
+(function () {
 
     const apiUrl = "http://localhost:3000/employees";
     const userApiUrl = "http://localhost:3000/users";
+    const emleaves = "http://localhost:3000/employeeleaves"
 
     let employees = [];
-    let users = [];
+
     let editingEmployeeId = null;
     let ee = null
-    // const employeeTableBody = document.getElementById("employeeTableBody");
-    // const employeeModal = document.getElementById("employeeModal");
-    // const credentialsModal = document.getElementById("credentialsModal");
-    // const employeeForm = document.forms['employeeForm'];
-    // const credentialsForm = document.forms['credentialsForm'];
-    // const toast = document.getElementById("toast");
+
 
 
     const employeeForm = document.getElementById('employeeForm');
     const employeeTable = document.getElementById('employeeTable').getElementsByTagName('tbody')[0];
-    // const employeeIdInput = document.getElementById('employeeId');
-    // const nameInput = document.getElementById('firstName');
-    // const nicInput = document.getElementById('nic');
-    // const emailInput = document.getElementById('email');
-    // const joinDateInput = document.getElementById('joinDate');
-    // const roleInput = document.getElementById('role');
 
     // Fetch Employees
     const fetchEmployees = async () => {
@@ -30,31 +20,12 @@
         employees = await response.json();
         renderEmployees();
     };
-    // Fetch Users
-    const fetchUsers = async () => {
-        const response = await fetch(userApiUrl);
-        users = await response.json();
-    };
-    // Render Employees
+
+
     const renderEmployees = () => {
         employeeTable.innerHTML = "";
         employees.forEach((employee) => {
-            //     const row = document.createElement("tr");
-            //     row.innerHTML = `
-            // <td>${employee.employeeId}</td>
-            // <td>${employee.nic}</td>
-            // <td>${employee.firstName}</td>
-            // <td>${employee.lastName}</td>
-            // <td>${employee.dob}</td>
-            // <td>${employee.doj}</td>
-            // <td>
-            // <button onclick="editEmployee('${employee.employeeId}')">Edit</button>
-            // <button onclick="deleteEmployee('${employee.employeeId}')">Delete</button>
-            // <button onclick="editCredentials('${employee.employeeId}')">Edit
-            // Credentials</button>
-            // </td>
-            // `;
-            //   employeeTableBody.appendChild(row);
+
 
             const row = employeeTable.insertRow();
             row.innerHTML = `
@@ -72,14 +43,13 @@
         `;
         });
     };
-    //fetchEmployees();
 
-    // Open Employee Modal for Create or Edit
     document.getElementById("addEmployeeBtn").onclick = () => {
         openEmployeeModal();
     };
 
-    // const openEmployeeModal = (employee = null) => {
+    const employeeModal = document.getElementById('employeeModal');
+
     const openEmployeeModal = (employee = null) => {
         employeeModal.style.display = "block";
 
@@ -91,12 +61,19 @@
             saveButton.innerText = "Update";
 
             const employeeIdInput = document.getElementById('employeeId');
+            document.getElementById("employeeId").disabled = true;
             const nameInput = document.getElementById('firstName');
             const nicInput = document.getElementById('nic');
             const dobInput = document.getElementById('dob');
             const emailInput = document.getElementById('email');
             const joinDateInput = document.getElementById('joinDate');
-            //const roleInput = document.getElementById('role');
+            const roleInput = document.getElementById('role');
+            roleInput.addEventListener('change', function() {
+                const selectedOption = roleInput.value;
+               if(selectedOption==""){
+                alert("select promotion or not")
+               }
+            });
             const role1 = document.getElementById('role1');
             const role2 = document.getElementById('role2');
 
@@ -107,20 +84,14 @@
             dobInput.value = employee.dob
             emailInput.value = employee.email
             joinDateInput.value = employee.joinDate
+
             role1.textContent = "Current Position - " + employee.role
             role2.textContent = "Upgraded : "
 
             editingEmployeeId = employee.employeeId;
             ee = employee.id
             console.log(employeeIdInput.value)
-            // role: roleInput.value
 
-            // employeeForm.nic.value = employee.nic;
-            // employeeForm.firstName.value = employee.firstName;
-            // employeeForm.lastName.value = employee.lastName;
-            // employeeForm.dob.value = employee.dob;
-            // employeeForm.doj.value = employee.doj;
-            // editingEmployeeId = employee.employeeId;
         }
         else {
             employeeForm.reset();
@@ -137,6 +108,8 @@
             credentialsModal.style.display = "none";
         };
     });
+
+
     // Function to generate unique EMP ID
     const generateEmpId = () => {
         const characters =
@@ -150,14 +123,11 @@
     };
 
     // Save Employee
-    employeeForm.onsubmit = async (e) => {
+
+    document.getElementById('employeeForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        const empId = editingEmployeeId;
-        // const nic = employeeForm.nic.value;
-        // const firstName = employeeForm.firstName.value;
-        // const lastName = employeeForm.lastName.value;
-        // const dob = employeeForm.dob.value;
-        // const doj = employeeForm.doj.value;
+        //const empId = editingEmployeeId;
+       
 
         const employeeIdInput = editingEmployeeId || generateEmpId();
         const nameInput = document.getElementById('firstName');
@@ -178,8 +148,8 @@
             role: roleInput.value
         };
 
-        console.log(editingEmployeeId)
-        console.log(ee)
+        // console.log(editingEmployeeId)
+        // console.log(ee)
         if (editingEmployeeId) {
             // Update employee
             await fetch(`${apiUrl}/${ee}`, {
@@ -199,6 +169,7 @@
             //         });
 
         } else {
+
             // Create new employee
             await fetch(apiUrl, {
                 method: "POST",
@@ -207,29 +178,42 @@
                 },
                 body: JSON.stringify(employeeData)
             });
-            // // Automatically create user credentials
-            // const userData = {
-            //     id: empId,
-            //     employeeId: empId,
-            //     username: empId,
-            //     password: "pwd123",
-            //     role: "Employee" // Default role as Employee; can be modified as needed
-            // };
-            // await fetch(userApiUrl, {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json"
-            //     },
-            //     body: JSON.stringify(userData)
-            // });
-            console.log(employeeData)
-            //employeeModal.style.display = "none";
-            await fetchEmployees();
+
+            let casualLeavescount = 46
+            let sickLeavesscount = 20
+            let earnedleavescount = 0
+            let today = new Date();
+            let formattedDate = today.getFullYear() + '-'
+                + String(today.getMonth() + 1).padStart(2, '0') + '-'
+                + String(today.getDate()).padStart(2, '0');
+
+
+            const newlwave = {
+
+                employeeId: employeeIdInput,
+                casualLeaves: casualLeavescount,
+                sickLeaves: sickLeavesscount,
+                earnedleave: earnedleavescount,
+                lastdate: formattedDate
+
+            };
+
+            await fetch(emleaves, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newlwave)
+            });
+
+            console.log(formattedDate)
+             employeeModal.style.display = "none";
+           fetchEmployees();
             // await fetchUsers(); // To refresh user data if needed
         };
 
 
-    }
+    })
 
     // Delete Employee
     window.deleteEmployee = async (empId) => {
@@ -306,7 +290,7 @@
         const query = e.target.value.toLowerCase();
         const filteredEmployees = employees.filter(emp => {
             return emp.nic.toLowerCase().includes(query) ||
-                emp.Name.toLowerCase().includes(query)
+                emp.name.toLowerCase().includes(query)
 
         });
         console.log(filteredEmployees)
@@ -330,14 +314,17 @@
                 <button class="edit" onclick="editEmployee('${employee.employeeId}')">Edit</button>
                 <button class="delete" onclick="deleteEmployee('${employee.employeeId}')">Delete</button>
             </td>`
-               
-           
+
+
         })
 
     };
-        // Initialize
-        fetchEmployees();
-        // fetchUsers();\
-    
-        
+    // Initialize
+    fetchEmployees();
+
+
+
+
+
+
 })();  

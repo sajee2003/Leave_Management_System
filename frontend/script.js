@@ -51,12 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if ((employeeId == "admin123") || (password == "ad123")) {
 
-              localStorage.setItem('loggedInUser', JSON.stringify('loggedInUser'));
+              localStorage.setItem('loggedInAdmin', JSON.stringify('loggedInUser'));
                 window.location.href ="admin/landingpage.html";
             }
 
             else {
-                const response = await fetch(`http://localhost:3001/users?employeeId=${employeeId}&password=${password}&_embed=employee`);
+                const response = await fetch(`http://localhost:3000/users?employeeId=${employeeId}&password=${password}&_embed=employee`);
 
                     
                 const users = await response.json();
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         let loggedInUser =user.employeeId
                        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
-  window.location.href = "employee/createleave/leaverequest.html";
+                                window.location.href = "employee/emlandpage.html";
 
                     } else {
                         alert('Employee data not found.');
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nic = document.getElementById('signup-nic').value;
 
         const re = await
-            fetch(`http://localhost:3001/employees?employeeId=${employeeId}`);
+            fetch(`http://localhost:3000/employees?employeeId=${employeeId}`);
 
         if (re) {
             const newsignup = {
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             console.log(newsignup)
             try {
-                const response = await fetch('http://localhost:3001/users', {
+                const response = await fetch('http://localhost:3000/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

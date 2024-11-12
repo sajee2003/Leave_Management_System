@@ -16,7 +16,7 @@ li {
 }
 
 h1 {
-   
+
     font-weight: 800;
     font-size: 1.5rem;
     background-color: #f57d96;
@@ -39,16 +39,17 @@ body {
     transition: all 0.35s ease-in-out;
     background-color: #fafbfe;
 }
+
 /* #f57d96 */
 #sidebar {
     width: 70px;
     min-width: 70px;
     z-index: 1000;
     transition: all .25s ease-in-out;
-    background-color:#f57d96;
+    background-color: #f57d96;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 #sidebar.expand {
@@ -73,7 +74,7 @@ body {
 }
 
 .sidebar-logo a {
-    color:white;
+    color: white;
     font-size: 2rem;
     font-weight: 900;
 }
@@ -110,6 +111,7 @@ a.sidebar-link:hover {
 .sidebar-item {
     position: relative;
 }
+
 /* #f57d96 */
 #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
     position: absolute;
@@ -119,7 +121,7 @@ a.sidebar-link:hover {
     padding: 0;
     min-width: 15rem;
     display: none;
-   box-shadow: inset;
+    box-shadow: inset;
 }
 
 #sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
@@ -148,11 +150,10 @@ a.sidebar-link:hover {
 }
 
 /*  */
-
+/* 
 .profile {
     font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 20px auto;
+
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
@@ -199,9 +200,9 @@ a.sidebar-link:hover {
 .profile-container {
 
     width: 100%;
-    max-width: 400px;
+
     background-color: #ffffff;
-    padding: 20px;
+
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -215,8 +216,10 @@ h2 {
     margin-bottom: 10px;
 }
 
-.form-group1,.form-group2 {
-    margin-bottom: 15px;
+.form-group2 {
+    
+    padding: 80px;
+
 }
 
 label {
@@ -273,15 +276,112 @@ button {
 
 button:hover {
     opacity: 0.9;
+} */
+
+
+/*  */
+
+
+.profile-container {
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    height: 100%;
 }
+
+.profile-left,
+.profile-center,
+.profile-right {
+    padding: 20px;
+}
+
+.profile-left {
+    text-align: center;
+    width: 25%;
+
+}
+
+.profile-pic {
+    width: 80%;
+    border-radius: 50%;
+}
+
+.profile-center {
+    width: 50%;
+    border: 5px solid #f57d96;
+    box-sizing: border-box;
+    border-radius: 50px;
+}
+
+.profile-center h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.profile-right {
+    width: 25%;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    padding: 8px 12px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #eee;
+}
+
+#experience-section,
+#additional-details-section {
+    margin-top: 20px;
+}
+
+#experience-section label,
+#additional-details-section label {
+    display: block;
+    font-weight: bold;
+
+
+}
+
+
+
+
 
 
 
 /*  */
 
-/* Container */
+/* 
 .leaverequestcontainer {
-    
+
     box-sizing: border-box;
     font-family: Arial, sans-serif;
     justify-content: center;
@@ -299,7 +399,7 @@ button:hover {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* Tabs */
+
 .tabs {
     display: flex;
     margin-bottom: 20px;
@@ -324,7 +424,7 @@ button:hover {
     background-color: #d0d0d0;
 }
 
-/* Leave Info */
+
 .leave-info {
     display: flex;
     justify-content: space-around;
@@ -347,7 +447,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Leave Application Form */
+
 .leave-application {
     padding: 20px;
     border: 1px solid #ddd;
@@ -369,7 +469,9 @@ button:hover {
     margin-bottom: 10px;
 }
 
-.leave-application input, .leave-application select, .leave-application textarea {
+.leave-application input,
+.leave-application select,
+.leave-application textarea {
     width: 100%;
     padding: 10px;
     margin-top: 5px;
@@ -416,7 +518,7 @@ button:hover {
     background-color: #ccc;
 }
 
-/* Responsive Styling */
+
 @media (max-width: 600px) {
     .leave-info {
         flex-direction: column;
@@ -426,4 +528,217 @@ button:hover {
         width: 100%;
         margin-bottom: 10px;
     }
+} */
+
+
+.container {
+    margin-top: 10px;
+}
+
+/* Tab Buttons Styling */
+.tab-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-buttons button {
+    margin-right: 10px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+}
+
+.tab-buttons .btn-primary {
+    background-color: #007bff;
+}
+
+.tab-buttons .btn-secondary {
+    background-color: #6c757d;
+}
+
+.tab-buttons button:hover {
+    opacity: 0.8;
+}
+
+/* Card Section Styling */
+.card-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.card {
+    width: 220px;
+    text-align: center;
+    padding:10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 3px;
+}
+
+.card p {
+    font-size: 11px;
+    color: #666;
+}
+
+/* Form Container Styling */
+.form-container {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-container h4 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Form Input Styling */
+.form-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
+}
+
+.form-container h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    transition: border-color 0.3s;
+}
+
+/* Flex layout for side-by-side form fields */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: #f57d96;
+    color: #fff;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+.confirm-text {
+    color: green;
+    font-weight: bold;
+}
+
+.reject-text {
+    color: red;
+    font-weight: bold;
+}
+
+.pending-text {
+    color: orange;
+    font-weight: bold;
 }

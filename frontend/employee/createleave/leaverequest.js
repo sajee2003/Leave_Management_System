@@ -1,60 +1,37 @@
-(function ()  {
+(function () {
 
-    const baseUrl = "http://localhost:3000/leaveRequests"; // Change this to your mock server URL
+    const baseUrl = "http://localhost:3000/leaveRequests";
     const leavesdata = "http://localhost:3000/employeeleaves";
 
 
     let leavesdatas = [];
-    //leavesdatas =[]
+    let allemrequestdatas = []
+
     let count = 0;
     let set = null;
-    let user =  JSON.parse(localStorage.getItem('loggedInUser'))
+    let findprofileemployeeleavesdatasId = null
+
+    let user = JSON.parse(localStorage.getItem('loggedInUser'))
     console.log(user)
 
-    // Show the active tab section
-    // function showSection(sectionId) {
-    //     const sections = document.querySelectorAll('.leave-application');
-    //     const tabs = document.querySelectorAll('.tab');
-
-    //     sections.forEach(section => {
-    //         section.style.display = (section.id === sectionId) ? 'block' : 'none';
-    //     });
-
-    //     tabs.forEach(tab => {
-    //         tab.classList.toggle('active', tab.getAttribute('onclick').includes(sectionId));
-    //     });
-    // }
-
-
-
-
-
-    const fetchEmployeesdata = async () => {
+    const fetchEmployeesleavedata = async () => {
         const response = await fetch(leavesdata);
         leavesdatas = await response.json();
         console.log(leavesdatas)
-        // renderEmployees();
-        getEmployee(user)
 
-        //     //console.log(empId)
-        //    // console.log(leavesdatas)
-        //     const employee = leavesdatas.find(emp => emp.employeeId == 123);
-        //     employeeii =employee.id
-        //    // console.log(leavesdatas)
-        //     console.log(employee)
-        //     const response2 = await fetch(`${leavesdata}/${employee}`);
-        //     const data = await response2.json();
+        getEmployee(user)
 
     };
 
-    // Fetch leave data from JSON server
+
     async function fetchLeaveData(findprofileemployeeleavesdatasId) {
         console.log(findprofileemployeeleavesdatasId)
         const response2 = await fetch(`${leavesdata}/${findprofileemployeeleavesdatasId}`);
         const data = await response2.json();
+        console.log(data)
 
 
-        let casAv =  data.casualLeaves;
+        let casAv = data.casualLeaves;
         let sicAv = data.sickLeaves;
         let earLe = data.earnedleave;
 
@@ -67,7 +44,7 @@
 
 
 
-   // document.getElementById("from-date").addEventListener("change", calculateLeaveDays);
+    // document.getElementById("from-date").addEventListener("change", calculateLeaveDays);
     document.getElementById("to-date").addEventListener("change", calculateLeaveDays);
 
     function calculateLeaveDays() {
@@ -92,9 +69,23 @@
                     }
                     // Move to the next day
                     currentDate.setDate(currentDate.getDate() + 1);
+
+                }
+                console.log(count)
+                console.log(15 >count > 10)
+                if (15 >count > 10) {
+                    alert("you can take  10 days  leaves more 10 days salay cut on extra days ")
+                    // document.getElementById('leave-form').reset()
+                   
+
+                }else if (count>15)
+                {
+                    alert("you can not take more 15 days ")
+                  document.getElementById('leave-form').reset()
+                    count = 0
                 }
                 document.getElementById('no-of-days').value = count
-                
+
                 set = true;
                 return count;
 
@@ -109,18 +100,21 @@
     // Submit leave application to JSON server
     document.getElementById('leave-form').addEventListener('submit', async (e) => {
         e.preventDefault();
-
         console.log(set)
+
+        let today = new Date();
+        let formattedDate = today.getFullYear() + '-'
+            + String(today.getMonth() + 1).padStart(2, '0') + '-'
+            + String(today.getDate()).padStart(2, '0');
 
         if (set) {
 
-
-        
             const leaveData = {
                 employeeId: user,
                 dateFrom: document.getElementById('from-date').value,
                 dateto: document.getElementById('to-date').value,
                 numOfDays: document.getElementById('no-of-days').value,
+                applicationDate:formattedDate,
                 type: document.getElementById('leave-type').value,
                 reason: document.getElementById('reason').value,
                 status: "pending"
@@ -139,21 +133,9 @@
 
         }
 
-        // Example usage:
-        // const startDate = document.getElementById('to-date').value;
-        // const endDate = document.getElementById('from-date').value;
-        // console.log(countLeaveDays(startDate, endDate)); // Outputs the number of leave days excluding Saturdays and Sundays
-
-
-
-
-        // alert("Leave application submitted successfully!");
-        // document.getElementById('leave-form').reset();
     });
 
-    // Initialize default section and fetch data
 
-    //showSection('apply-leave');
 
 
     window.getEmployee = (user) => {
@@ -161,14 +143,86 @@
         console.log(leavesdatas)
         const findprofileemployeeleavesdatas = leavesdatas.find(emp => emp.employeeId == user);
         // console.log(leavesdatas)
-        
+
         console.log(findprofileemployeeleavesdatas)
-        let findprofileemployeeleavesdatasId = findprofileemployeeleavesdatas.id
+        findprofileemployeeleavesdatasId = findprofileemployeeleavesdatas.id
         console.log(findprofileemployeeleavesdatasId)
 
         fetchLeaveData(findprofileemployeeleavesdatasId);
     };
 
-    fetchEmployeesdata();
+    fetchEmployeesleavedata();
+
+    // showTab('applyLeave');
+
+    document.getElementById('btnintial').onclick = function () {
+        document.getElementById('applyLeave').style.display = 'block';
+
+    };
+
+    document.getElementById('btnsecond').onclick = function () {
+        document.getElementById('applyLeave').style.display = 'none';
+        document.getElementById('leaveStatus').style.display = 'block';
+        fetchEmployeesrequestdata()
+    };
+
+ 
+
+
+    const fetchEmployeesrequestdata = async () => {
+
+        const response12 = await fetch(baseUrl);
+        allemrequestdatas = await response12.json();
+        console.log(allemrequestdatas)
+
+        const filteredrequestdatas = allemrequestdatas.filter(emp => emp.employeeId == user);
+
+        const employeerequestTable = document.getElementById('employeerequestTable').getElementsByTagName('tbody')[0];
+        employeerequestTable.innerHTML = "";
+        filteredrequestdatas.forEach((employee) => {
+
+
+            const row = employeerequestTable.insertRow();
+            row.innerHTML = `
+                <td>${employee.employeeId}</td>
+                <td>${employee.dateFrom}</td>
+                <td>${employee.dateto}</td>
+                <td>${employee.numOfDays}</td>
+                 <td>${employee.applicationDate}</td>
+                <td>${employee.type}</td>
+                <td>${employee.reason}</td>
+                <td>${employee.status}</td>
+                  `
+
+
+        })
+
+
+        document.querySelectorAll("table tr td").forEach(cell => {
+
+            if (cell.textContent.trim() == "confirm") {
+
+                cell.classList.add("confirm-text")
+            } else if (cell.textContent.trim() === "reject") {
+
+                cell.classList.add("reject-text");
+
+            }
+              else if (cell.textContent.trim() === "pending")
+              {
+
+                cell.classList.add("pending-text");
+
+            }
+
+        });
+
+
+
+    };
+
+
+
+
 
 })();  
